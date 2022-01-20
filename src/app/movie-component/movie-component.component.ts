@@ -9,7 +9,7 @@ export class MovieComponentComponent implements OnInit {
   @Input() movie;
   @Output() customClick = new EventEmitter();
   isMovieShown = true;
-  isClicked = false
+  isClicked = false;
 
   onClick(){
     console.log('So much clicked!');
@@ -19,6 +19,10 @@ export class MovieComponentComponent implements OnInit {
   onHighlight(){
     this.isClicked = !this.isClicked;
   }
+
+  // onAddMovie(movieItem){
+  //   console.log(movieItem);
+  // }
 
   constructor() { }
 
