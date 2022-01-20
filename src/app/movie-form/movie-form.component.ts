@@ -13,6 +13,7 @@ export class MovieFormComponent implements OnInit {
   form: FormGroup;
   constructor() { }
 
+  // Validator and custom validator
   ngOnInit(): void {
     this.form = new FormGroup({
       medium: new FormControl('Movies'),
@@ -30,12 +31,17 @@ export class MovieFormComponent implements OnInit {
       return null;
     }
     const year = parseInt(control.value, 10);
-    const minYear = 1900;
+    const minYear = 1800;
     const maxYear = 2100;
     if(year >= minYear && year <= maxYear){
       return null;
     } else {
-      return {year: true};
+      return {
+        year: {
+          min: minYear,
+          max: maxYear
+        }
+      };
     }
 
   }
