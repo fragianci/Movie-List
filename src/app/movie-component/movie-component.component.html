@@ -1,0 +1,12 @@
+<!-- Custom property, ngif, attribute directives > [ngClass], custom directives and pipes-->
+<section [ngClass]="{clicked: isClicked}" (click) = 'onHighlight()'>
+    <div *ngIf="isMovieShown" [movieFavorite] = 'movie.isFavorite'>
+        <h1>Movie's title: {{movie.title | uppercase}}</h1>
+        <p>Movie's main actor: {{movie.actor}}</p>
+        <p>Movie's score: {{movie.score}}</p>
+        <p>Watched on: {{movie.score | date: 'shortDate'}}</p>
+    </div>
+
+    <!-- Event binding and Custom event -->
+    <h1 class="bottomlike" (click)="onClick()">Click here and watch the console</h1>
+</section>
