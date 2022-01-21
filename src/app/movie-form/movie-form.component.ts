@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-form',
@@ -11,13 +11,13 @@ export class MovieFormComponent implements OnInit {
 
   // Model driven form
   form: FormGroup;
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   // Validator and custom validator
   ngOnInit(): void {
-    this.form = new FormGroup({
-      medium: new FormControl('Movies'),
-      name: new FormControl('', Validators.compose([
+    this.form = this.formBuilder.group({
+      medium: this.formBuilder.control('Movies'),
+      name: this.formBuilder.control('', Validators.compose([
         Validators.required,
         Validators.pattern('[\\w\\-\\s\\/]+')
       ])),

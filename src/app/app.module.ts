@@ -7,6 +7,7 @@ import { CategoryListPipe } from './category-list.pipe';
 import { FavoriteDirective } from './favorite.directive';
 import { MovieComponentComponent } from './movie-component/movie-component.component';
 import { MovieFormComponent } from './movie-form/movie-form.component';
+import { MovieService } from './movie.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { MovieFormComponent } from './movie-form/movie-form.component';
     BrowserModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
