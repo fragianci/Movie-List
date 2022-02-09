@@ -9,21 +9,21 @@ export class MovieService {
         actor: 'Tim Chalamet',
         score: 9.5,
         category: 'Sci-fi',
-        watchedOn: '10-19-2021'
+        year: 2021
       },
       {
         title: "Eternals",
         actor: 'Shish-man',
         score: 9.8,
         category: 'Superhero',
-        watchedOn: '11-05-2021'
+        year: 2021
       },
       {
         title: 'Spider-man: no way home',
         actor: 'Tom Holland',
         score: 'Too emotional to score',
         category: 'Superhero',
-        watchedOn: '12-15-2021'
+        year: 2021
       }
     ];
 

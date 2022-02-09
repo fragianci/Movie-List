@@ -1,12 +1,12 @@
 <!-- Custom property, ngif, attribute directives > [ngClass], custom directives and pipes-->
 <section [ngClass]="{clicked: isClicked}" (click) = 'onHighlight()'>
-    <div *ngIf="isMovieShown" [movieFavorite] = 'movie.isFavorite'
-    >
+    <div *ngIf="isMovieShown" [movieFavorite] = 'movie.isFavorite'>
     <!-- (movieEmitter)="onAddMovie($event)" -->
         <h1>Movie's title: {{movie.title | uppercase}}</h1>
-        <p>Movie's main actor: {{movie.actor}}</p>
-        <p>Movie's score: {{movie.score}}</p>
-        <p>Watched on: {{movie.watchedOn | date: 'shortDate'}}</p>
+        <p>Main actor: {{movie.actor}}</p>
+        <p>Score: {{movie.score}}</p>
+        <p>Category: {{movie.category}}</p>
+        <p>Year: {{movie.year}}</p>
     </div>
 
     <!-- Event binding and Custom event -->

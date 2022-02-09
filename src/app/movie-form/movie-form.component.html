@@ -40,17 +40,25 @@
 <form [formGroup]="form" (ngSubmit) = "onSubmit(form.value)">
     <ul>
         <li>
-            <label for="medium">Medium</label>
-            <select name="medium" id="medium" formControlName = 'medium'>
-                <option value="Movies">Movies</option>
-                <option value="Series">Series</option>
-            </select>
+            <label for="title">Name</label>
+            <input type="text" name="title" [(ngModel)]="title" id="title" formControlName = 'title'>
+            <div *ngIf="form.get('title').hasError('pattern')" class="error">
+                * Name has invalid characters
+            </div>
+            {{title}}
         </li>
         <li>
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" formControlName = 'name'>
-            <div *ngIf="form.get('name').hasError('pattern')" class="error">
-                Name has invalid characters
+            <label for="actor">Actor</label>
+            <input type="text" name="actor" id="actor" formControlName = 'actor'>
+            <div *ngIf="form.get('actor').hasError('pattern')" class="error">
+                * Actor has invalid characters
+            </div>
+        </li>
+        <li>
+            <label for="score">Score</label>
+            <input type="text" name="score" id="score" formControlName = 'score'>
+            <div *ngIf="form.get('score').hasError('score')" class="error">
+                * Score has invalid characters
             </div>
         </li>
         <li>
@@ -67,7 +75,7 @@
             <label for="year">Year</label>
             <input type="text" name="year" id="year" maxlength="4" formControlName = 'year'>
             <div *ngIf="form.get('year').errors as yearErrors" class="error">
-                Year must be between {{yearErrors.year.min}} and {{yearErrors.year.max}}
+                * Year must be between {{yearErrors.year.min}} and {{yearErrors.year.max}}
             </div>
         </li>
     </ul>

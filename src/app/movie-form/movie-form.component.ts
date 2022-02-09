@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-movie-form',
@@ -11,19 +12,34 @@ export class MovieFormComponent implements OnInit {
 
   // Model driven form
   form: FormGroup;
-  constructor(private formBuilder: FormBuilder) { }
+  title: string;
+  constructor(
+    private formBuilder: FormBuilder,
+    private movieService: MovieService) { }
 
   // Validator and custom validator
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      medium: this.formBuilder.control('Movies'),
-      name: this.formBuilder.control('', Validators.compose([
+      title: this.formBuilder.control('', Validators.compose([
         Validators.required,
         Validators.pattern('[\\w\\-\\s\\/]+')
       ])),
+      actor: this.formBuilder.control('', Validators.compose([
+        Validators.required,
+        Validators.pattern('[\\w\\-\\s\\/]+')
+      ])),
+      score: new FormControl('', this.scoreValidator),
       category: new FormControl(''),
       year: new FormControl('', this.yearValidator)
     });
+  }
+
+  scoreValidator(control: FormControl){
+    if(!isNaN(control.value)){
+      return null
+    } else {
+      return { score: true };
+    }
   }
 
   yearValidator(control: FormControl){
@@ -43,12 +59,11 @@ export class MovieFormComponent implements OnInit {
         }
       };
     }
-
   }
 
   onSubmit(movieItem){
     // this.movieEmitter.emit(movieItem);
-    console.log(movieItem);
+    this.movieService.addMovie(movieItem);
   }
 
 }

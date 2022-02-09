@@ -1,6 +1,6 @@
 <!-- String interpolation, property binding, event binding, custom property, custom event,
 ngif, ngfor, attribute directive, custom directive, pipes, custom pipes, template driven form,
-model driven form, Validators, custom validators, error handling -->
+model driven form, Validators, custom validators, error handling, service -->
 
 <section>
     <!-- String interpolation -->
@@ -11,17 +11,24 @@ model driven form, Validators, custom validators, error handling -->
 
     <app-movie-form></app-movie-form>
 
-    <!-- Custom pipe -->
+    <div>
+        <button (click)="hide()" [innerText]="isHiding? 'Show' : 'Hide'"></button>
+    </div>
+    
+    <!-- Custom pipe and ternary operation (con le ternary operation si possono fare anche le assegnazioni con variabili const perche è tutto inline) -->
     <header>
-        Genre: {{highMovies | categoryList}}
+        Genre: {{isHiding ? whoops : (highMovies | categoryList)}}
     </header>
 
     <!-- Custom property, Custom event and ngfor (directive strutturale) -->
-    <app-movie-component
-        *ngFor="let singleMovie of highMovies"
-        [movie]="singleMovie"
-        (customClick)="onUpdateMovie($event)">
-    </app-movie-component>
+    <div *ngIf="!isHiding">
+        <app-movie-component
+            *ngFor="let singleMovie of highMovies"
+            [movie]="singleMovie"
+            (customClick)="onUpdateMovie($event)">
+        </app-movie-component>
+
+    </div>
 
     <!--  -->
 </section>
