@@ -12,7 +12,7 @@ export class MovieFormComponent implements OnInit {
 
   // Model driven form
   form: FormGroup;
-  title: string;
+  name: string;
   constructor(
     private formBuilder: FormBuilder,
     private movieService: MovieService) { }

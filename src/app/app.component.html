@@ -11,6 +11,13 @@ model driven form, Validators, custom validators, error handling, service -->
 
     <app-movie-form></app-movie-form>
 
+    <!-- Test API -->
+    <h2>Test API</h2>
+    <div>
+        <button (click)="getData()">GET</button>
+        <p *ngIf="pokemon[0]">My pokemon name is {{pokemon[0].name}} and his abilities are {{pokemon[0].abilities[0]}} and {{pokemon[0].abilities[1]}}</p>
+    </div>
+
     <div>
         <button (click)="hide()" [innerText]="isHiding? 'Show' : 'Hide'"></button>
     </div>
